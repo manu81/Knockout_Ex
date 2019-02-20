@@ -1,17 +1,45 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<ul data-bind="foreach: tags">
+    <li>
+        <span data-bind="text: name"></span>
+        <div style="width:200px;float:right;margin-right:500px;">
+            <a href="#" class="tag-edit">Edit</a>
+            <a href="#" class="tag-delete">Delete</a>
+        </div>
+    </li>
+</ul>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+@section scripts{
+    <script>
+        $(function () {
+            var tagArray = [
+                { name: 'Beverages' },
+                { name: 'Sports' },
+                { name: 'Food' }
+            ];
+            var viewModel = {
+                tags: ko.observableArray(tagArray)
+            };
+            ko.applyBindings(viewModel);
+
+
+            $(document).on('click', '.tag-delete', function () {
+                var itemToRemove = ko.dataFor(this);
+                var context = ko.contextFor(this);
+                console.log(itemToRemove)
+                console.log(context)
+            })
+
+            console.log("knockout")
+            console.log(viewModel)
+            console.log("ko.toJS")
+            console.log(ko.toJS(viewModel))
+            console.log("ko.toJSON")
+            console.log(ko.toJSON(viewModel))
+        })
+    </script>
+
+}

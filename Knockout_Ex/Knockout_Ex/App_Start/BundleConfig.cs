@@ -10,7 +10,8 @@ namespace Knockout_Ex
         {
             bundles.Add(new ScriptBundle("~/bundles/myBundle").Include(
                 "~/Scripts/jquery-{version}.js",
-                "~/Scripts/knockout-{version}.js"));
+                "~/Scripts/knockout-{version}.js",
+                "~/Scripts/app/dump.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));

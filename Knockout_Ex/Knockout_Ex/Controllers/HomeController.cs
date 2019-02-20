@@ -26,5 +26,11 @@ namespace Knockout_Ex.Controllers
 
             return View();
         }
+
+        public ActionResult Foo()
+        {
+
+            return View();
+        }
     }
 }
